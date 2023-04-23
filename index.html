@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="filtro">
+    <div class="table-responsive">
+            
+      <form class="row gy-2 gx-3 align-items-center">
+       <div class="filtro">
       <select class="form-select" id="select" aria-label="Default select example">
         <option selected>Selecione o Filtro</option>
         <option value="1">Id</option>
@@ -16,13 +19,15 @@
         <option value="3">Cidade</option>
       </select>
       <input type="text" id="campoBusca">
-      <button type="button" class="btn btn-primary"
-        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-  Filtrar
-</button>
     </div>
+    <div class="col-auto">
+    <button type="button" class="btn btn-primary" id="myBtn"
+    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" onclick="filtrarUsuarios()">Filtrar
+</button>
+</div>
+</form>
 
-    <table class="table">
+    <table class="table" id="tabela">
       <thead>
         <tr>
           <th scope="col">ID</th>

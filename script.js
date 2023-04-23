@@ -1,14 +1,18 @@
 const url = "https://jsonplaceholder.typicode.com/users/";
 
-let data = [];
+let usuarios = [];
 
-async function listaDeUsuarios() {
-    try{
-        const response = await fetch(url);
-        data = await response.json();
-        
+function carregarDados() {
+        fetch(url)
+        .then((response) => response.json())
+        .then((data)=> {
+            usuarios = data;
+            listaDeUsuarios();
+        });
+           function listaDeUsuarios(){
             const tbody = document.querySelector("table tbody");
-            data.forEach((usuario) => {
+            tbody.innerHTML ="";
+            usuarios.forEach((usuario) => {
                 
                 const tr = document.createElement("tr");
 
@@ -42,25 +46,38 @@ async function listaDeUsuarios() {
 
                 tbody.appendChild(tr);
 
-            });
+            })
 
-         } catch(error){
-            console.log(error);
-         }
-        }
+         }}
+         
 
-listaDeUsuarios();
+    function filtrarUsuarios() {
 
+    let filtro = document.getElementById("campoBusca").value;
+    let tipoPesquisa = document.getElementById("select").value;
+    
+       console.log(filtro);
+       console.log(tipoPesquisa);
 
-const usuarioFiltrado = document.getElementById("campoBusca").value;
-const tipoPesquisa = document.getElementById("select").value;
-    function filtrar(event) {
-    event.preventDefault();
-   
-
-    if (tipoPesquisa) {
         
-    }
 
-}
+         const usuariosFiltrados = usuarios.filter((usuario) => {
+  f(tipoPesquisa === "id"){
+            
+   return usuario.id.toString().toLowerCase().includes(filtro);
+            
+
+      } else if (tipoPesquisa === "nome") {
+           return usuario.name.toLowerCase().includes(filtro);
+
+        } else if (tipoPesquisa === "cidade") {
+          return usuario.address.city.toLowerCase().includes(filtro);
+        }
+      });
+       document.getElementById("myBtn").addEventListener ("click", filtrarUsuarios)
+       usuarios = usuariosFiltrados;
+   
+    }
+   carregarDados();
+  
 
