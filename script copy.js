@@ -1,11 +1,10 @@
 const url = "https://jsonplaceholder.typicode.com/users/";
 
-let data = [];
 
 async function listaDeUsuarios() {
     try{
         const response = await fetch(url);
-        data = await response.json();
+        const data = await response.json();
         
             const tbody = document.querySelector("table tbody");
             data.forEach((usuario) => {
@@ -49,16 +48,15 @@ async function listaDeUsuarios() {
          }
         }
 
-listaDeUsuarios();
+// listaDeUsuarios();
 
-
-const usuarioFiltrado = document.getElementById("campoBusca").value;
-const tipoPesquisa = document.getElementById("select").value;
-    function filtrar(event) {
+function filtrar(event) {
     event.preventDefault();
-   
+    const usuarioFiltrado = document.getElementById("campoBusca").value;
+    const tipoPesquisa = document.getElementById("select").value;
 
     if (tipoPesquisa) {
+
         
     }
 
